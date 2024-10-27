@@ -1,22 +1,33 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
-import ErrorRoute from "./pages/errorRouter";
+import ErrorRoutes from "./pages/errorRoutes";
+import ForgotPasswordPage from "./pages/ForgotPassword";
+import DashboardPage from "./pages/dashboard";
+import BalancePage from "./pages/balance";
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <div>Halaman Utama</div>,
-      errorElement: <ErrorRoute/>,
+      element: <DashboardPage />,
+      errorElement: <ErrorRoutes />,
     },
     {
       path: "/login",
-      element: <SignInPage/>,
+      element: <SignInPage />,
     },
     {
       path: "/register",
-      element: <SignUpPage/>,
+      element: <SignUpPage />,
+    },
+    {
+      path: "/forgotpw",
+      element: <ForgotPasswordPage />,
+    },
+    {
+      path: "/balance",
+      element: <BalancePage />,
     },
   ]);
 
