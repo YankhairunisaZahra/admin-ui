@@ -1,5 +1,5 @@
 import Input from "./Input";
-import Label from "./Label";
+import Label from "./label";
 
 const LabeledInput = (props) => {
   const { label, name, type, placeholder } = props;
