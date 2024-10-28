@@ -2,7 +2,7 @@ import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
 
-const FromSignIn = () => {
+const FormSignIn = () => {
     return (
         <form action="">
         <div className="mb-6">
@@ -31,4 +31,4 @@ const FromSignIn = () => {
     );
 };
 
-export default FromSignIn;
+export default FormSignIn;
