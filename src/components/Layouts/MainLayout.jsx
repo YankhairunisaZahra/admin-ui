@@ -1,6 +1,7 @@
 import { Children } from "react";
-import Header from "../Fragments/Header";
+
 import Navbar from "../Fragments/Navbar";
+import Header from "../fragments/Header";
 
 const MainLayout = (props) => {
   const { children } = props;
