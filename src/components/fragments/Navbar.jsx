@@ -52,7 +52,7 @@ const Navbar = () => {
     <nav className="bg-defaultBlack text-special-bg2 sm:w-72 w-28 h-screen px-7 py-12 flex flex-col justify-between overflow-y-auto">
       <div>
         <div className="flex justify-center mb-10">
-          <Logo variant="text-white text-2x1" />
+          <Logo />
         </div>
         {menus.map((menu) => (
           <Link to={menu.link} key={menu.id}>
@@ -63,6 +63,7 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
+      <div className="stiky bottom-12"></div>
       <div className="mx-auto w-full">
         <Link to="/logout">
           <div className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white">
