@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
-import ErrorRoutes from "./pages/errorRoutes";
+import ErrorRoutes from "./pages/errorRouter";
 import ForgotPasswordPage from "./pages/ForgotPassword";
 import DashboardPage from "./pages/dashboard";
 import BalancePage from "./pages/balance";
