@@ -5,30 +5,25 @@ const DashboardPage = () => {
   return (
     <MainLayout type="dashboard">
       {/* top content start*/}
-      <div className="mb-4 sm:flex sm:gap-6">
-        <div className="mb-4 sm:w-1/3">
-          <Card />
+      <div className="md:grid md:grid-cols-3 md:gap-x-6">
+        <Card title="Total Balance" />
+        <Card 
+          title="Goals"
+          desc="Lorem ipsum dolor sit amet consectur adipisicing elit. Ullam dolore sapiente suscipit nam, vel officia ipsam praesentium earum unde provident nisi corrupsi sit? Officia minima maxime magni querat id exercitionem." 
+          />
+        <Card title="Upcoming Bill" /> 
+        <div className="md:col-span-1">
+          <Card title="Recent Transaction" />
         </div>
-        <div className="mb-4 sm:w-1/3">
-          <Card />
+        <div className="md:col-span-2 flex flex-col flex-1">
+          <Card title="Recent Transactions" 
+            desc="Lorem ipsum dolor sit amet consectur adipisicing elit. Ullam dolore sapiente suscipit nam, vel officia ipsam praesentium earum unde provident nisi corrupsi sit? Officia minima maxime magni querat id exercitionem."
+          />
+          <Card title="Expenses Breakdown" />
         </div>
-        <div className="mb-4 sm:w-1/3">
-          <Card />
-        </div>
-      </div>
-      {/* top content end*/}
-      {/* bottom content start*/}
-      <div className="mb-4 sm:flex sm:gap-6">
-        <div className="mb-4 sm:w-1/3">
-          <Card />
-        </div>
-        <div className="sm:w-2/3">
-          <div className="mb-4">
-            <Card />
-          </div>
-          <div className="mb-4">
-            <Card />
-          </div>
+        <div className="md:col-span-2 flex flex-col flex-1">
+        <Card title="Statistics" />
+        <Card title="Expenses Breakdown" />
         </div>
       </div>
       {/* bottom content end*/}
