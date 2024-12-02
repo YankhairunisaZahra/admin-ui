@@ -32,7 +32,7 @@ const App = () => {
       element: <BalancePage />,
     },
     {
-      path: "/bexpences",
+      path: "/expences",
       element: <ExpencesPage />,
     },
     
