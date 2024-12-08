@@ -7,43 +7,43 @@ const Navbar = () => {
     {
       id: "overview",
       link: "/",
-      icon: <Icon.Overview />,
+      //icon: <Icon.Overview />,
       label: "Overview",
     },
     {
       id: "balance",
       link: "/balance",
-      icon: <Icon.Balance />,
+      //icon: <Icon.Balance />,
       label: "Balance",
     },
     {
       id: "transaction",
       link: "/transaction",
-      icon: <Icon.Transaction />,
+      //icon: <Icon.Transaction />,
       label: "Transaction",
     },
     {
       id: "bills",
       link: "/bills",
-      icon: <Icon.Bills />,
+      //icon: <Icon.Bills />,
       label: "Bills",
     },
     {
       id: "expencess",
       link: "/expencess",
-      icon: <Icon.Expencess />,
+      //icon: <Icon.Expencess />,
       label: "Expencess",
     },
     {
       id: "goals",
       link: "/goals",
-      icon: <Icon.Goals />,
+      //icon: <Icon.Goals />,
       label: "Goals",
     },
     {
       id: "settings",
       link: "/settings",
-      icon: <Icon.Settings />,
+      //icon: <Icon.Settings />,
       label: "Settings",
     },
   ];
@@ -73,7 +73,7 @@ const Navbar = () => {
         <Link to="/logout">
           <div className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white">
             <div className="mx-auto sm:mx-0">
-              <Icon.Logout />
+              {/* <Icon.Logout /> */}
             </div>
             <div className="ms-3 hidden sm:block">Logout</div>
           </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
             <div className="text-xs">View Profile</div>
           </div>
           <div className="hidden sm:block self-center justify-self-end">
-            <Icon.Kebab />
+            {/* <Icon.Kebab /> */}
           </div>
         </div>
       </div>
