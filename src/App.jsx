@@ -5,7 +5,7 @@ import ErrorRoute from "./pages/errorRouter";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/dashboard";
 import Balance from "./pages/balance";
-import Expenses from "./pages/expenses";
+import Expenses from "./pages/expences";
 
 const App = () => {
   const myRouter = createBrowserRouter([
