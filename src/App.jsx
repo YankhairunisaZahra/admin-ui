@@ -1,19 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
-import ErrorRoutes from "./pages/errorRouter";
-import ForgotPasswordPage from "./pages/ForgotPassword";
-import DashboardPage from "./pages/dashboard";
-import BalancePage from "./pages/balance";
-import ExpencesPage from "./pages/expences";
-
+import ErrorRoute from "./pages/errorRouter";
+import ForgotPassword from "./pages/ForgotPassword";
+import Dashboard from "./pages/dashboard";
+import Balance from "./pages/balance";
+import Expenses from "./pages/expenses";
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <DashboardPage />,
-      errorElement: <ErrorRoutes />,
+      element: <Dashboard />,
+      errorElement: <ErrorRoute />,
     },
     {
       path: "/login",
@@ -24,20 +23,17 @@ const App = () => {
       element: <SignUpPage />,
     },
     {
-      path: "/forgotpw",
-      element: <ForgotPasswordPage />,
+      path: "/forgot",
+      element: <ForgotPassword />,
     },
     {
       path: "/balance",
-      element: <BalancePage />,
+      element: <Balance />
     },
     {
-      path: "/expences",
-      element: <ExpencesPage />,
-    },
-    
-  
-    
+      path: "/expenses",
+      element: <Expenses />
+    }
   ]);
 
   return (
