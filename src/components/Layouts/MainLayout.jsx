@@ -1,5 +1,3 @@
-
-
 import Header from "../Fragments/Header";
 import Navbar from "../Fragments/Navbar";
 

@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import { Icon } from "../Icon";
+// import { Icon } from "../Icon";
+import { Icon } from "../Elements/Icon";
 import Logo from "../Elements/Logo";
 
 const Navbar = () => {
@@ -25,13 +26,13 @@ const Navbar = () => {
     {
       id: "bills",
       link: "/bills",
-      icon: <Icon.Bills />,
+      icon: <Icon.Bill />,
       label: "Bills",
     },
     {
       id: "expencess",
-      link: "/expencess",
-      icon: <Icon.Expencess />,
+      link: "/expenses",
+      icon: <Icon.Expenses />,
       label: "Expencess",
     },
     {
@@ -49,23 +50,23 @@ const Navbar = () => {
   ];
 
   return (
-      <nav className="bg-defaultBlack text-special-bg2 sm:w-72 w-28 min-h-screen px-7 py-12 flex flex-col justify-between">
-        <div>
+    <nav className="bg-defaultBlack text-special-bg2 sm:w-72 w-28 min-h-screen px-7 py-12 flex flex-col justify-between">
+      <div>
         <NavLink to="/" className="flex justify-center mb-10">
-        <Logo variant="text-white text-sm sm:text-2xl" />
+          <Logo variant="text-white text-sm sm:text-2xl" />
         </NavLink>
         {menus.map((menu) => (
-         <NavLink 
-         key={menu.id} 
-         to={menu.link}
-         className={({ isActive }) =>
-          isActive
-            ? "flex bg-primary text-white font-bold px-4 py-3 rounded-md"
-            : "flex hover:bg-special-bg3 hover-text-white px-4 py-3 rounded-md"
-         }>
+          <NavLink
+            key={menu.id}
+            to={menu.link}
+            className={({ isActive }) =>
+              isActive
+                ? "flex bg-primary text-white font-bold px-4 py-3 rounded-md"
+                : "flex hover:bg-special-bg3 hover-text-white px-4 py-3 rounded-md"
+            }>
             <div className="mx-auto sm:mx-0">{menu.icon}</div>
             <div className="ms-3 hidden sm:block">{menu.label}</div>
-         </NavLink>
+          </NavLink>
         ))}
       </div>
       <div className="stiky bottom-12"></div>
@@ -73,7 +74,7 @@ const Navbar = () => {
         <Link to="/logout">
           <div className="flex bg-special-bg3 px-4 py-3 rounded-md hover:text-white">
             <div className="mx-auto sm:mx-0">
-              { <Icon.Logout /> }
+              {<Icon.Logout />}
             </div>
             <div className="ms-3 hidden sm:block">Logout</div>
           </div>
@@ -92,7 +93,7 @@ const Navbar = () => {
             <div className="text-xs">View Profile</div>
           </div>
           <div className="hidden sm:block self-center justify-self-end">
-            { <Icon.Kebab /> }
+            {<Icon.KebabMenu />}
           </div>
         </div>
       </div>

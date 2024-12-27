@@ -18,19 +18,26 @@ const CardBalance = () => {
         <div>
           Account Type
           <br />
-          <span className="text-xl font-bold">{account.accountType}</span>
+          <span className="text-xl font-bold">
+            {account.accountType}
+          </span>
           <br />
           {account.accountNumber}
         </div>
         <div className="flex flex-col justify-between">
           {account.logo != "" && (
-            <img className="ms-auto h-8" src={account.logo} />
+            <img
+              className="ms-auto"
+              src={`/images/${account.logo}`}
+            />
           )}
 
           <div className="flex">
-            <span className="text-xl font-bold">${account.balance}</span>
-            <div className="bg-white max-w-min rounded-full ps-1 pt-1 ms-4 text-primary">
-              <Icon.ArrowRight />
+            <span className="text-xl font-bold">
+              ${account.balance}
+            </span>
+            <div className="bg-white max-w-min rounded-full ps-1 pt-1 ms-4">
+              {/* <Icon.ArrowUpRight /> */}
             </div>
           </div>
         </div>

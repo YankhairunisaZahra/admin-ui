@@ -1,4 +1,4 @@
-const Bills = [
+const bills = [
   {
     id: 1,
     name: "Figma - Yearly Plan",
@@ -23,4 +23,4 @@ const Bills = [
   },
 ];
 
-export default Bills;
+export default bills;

@@ -3,8 +3,11 @@ import MainLayout from "../components/Layouts/MainLayout";
 import bills from "../data/bills";
 import expensesBreakdown from "../data/expensesBreakdown";
 import transactions from "../data/transactions";
+import goals from "../data/goals";
 import CardBill from "../components/Fragments/dashboard/CardBill";
 import { useState } from "react";
+import { Icon } from "../components/Elements/Icon";
+import CardBalance from "../components/fragments/dashboard/CardBalance";
 
 const Dashboard = () => {
   const tabs = ["All", "Revenue", "Expense"];
@@ -43,11 +46,41 @@ const Dashboard = () => {
       </div>
     </div>
   ));
+
+  // const goalsCard = (
+  //   <div key={goals.id} className="lg:flex justify-between pt-3 pb-3 col-12">
+  //     <div>
+  //       <span className="col-6 text-2xl font-bold border-b">${goals.targetAmount}</span>
+  //     </div>
+  //     <div>
+  //       <span className="col-6 text-right border-b pb-2">May, 2025</span>
+  //     </div>
+  //   </div>
+  // );
+
+  const goalsCard = (
+    <div key={goals.id} className="lg:flex justify-between pt-3 pb-3 col-12">
+      <div className="flex items-center">
+        <span className="col-6 text-2xl font-bold border-b">${goals.targetAmount}</span>
+        {/* Progress bar container */}
+        <div className="ml-4 w-full bg-gray-200 rounded-full h-2">
+          {/* Progress bar itself */}
+          <div
+            className="bg-blue-500 rounded-full h-2"
+            style={{ width: `${(goals.presentAmount / goals.targetAmount) * 100}%` }}
+          ></div>
+        </div>
+      </div>
+      <div className="col-6 text-right border-b pb-2">May, 2025</div>
+    </div>
+  );
+
+
   const expenseCard = expensesBreakdown.map((expense) => (
     <div key={expense.id} className="flex pb-4 justify-between">
       <div className="flex">
         <div className="bg-special-bg px-3 rounded-lg flex flex-col place-content-center">
-          {/* {expense.icon} */}
+          {expense.icon}
         </div>
         <div className="ms-4">
           <span className="text-gray-02">{expense.category}</span>
@@ -55,12 +88,12 @@ const Dashboard = () => {
           <span className="font-bold text-lg">${expense.amount}</span>
           <div className="flex">
             <span className="text-gray-02">{expense.percentage}%</span>{" "}
-            {/* {expense.arrow} */}
+            {expense.arrow}
           </div>
         </div>
       </div>
       <div className="flex place-content-center flex-col me-8">
-        {/* <Icon.ArrowRight /> */}
+        <Icon.ArrowRight />
       </div>
     </div>
   ));
@@ -68,7 +101,7 @@ const Dashboard = () => {
     <div key={transaction.id} className="flex justify-between my-6">
       <div className="flex">
         <div className="bg-special-bg px-3 rounded-lg flex flex-col place-content-center">
-          {/* {transaction.icon} */}
+          {transaction.icon}
         </div>
         <div className="ms-4">
           <span className="text-xl font-bold">
@@ -91,12 +124,18 @@ const Dashboard = () => {
     <MainLayout type="dashboard">
       {/* top content start*/}
       <div className="md:grid md:grid-cols-3 md:gap-x-6">
-        <Card title="Total Balance" />
+        {/* <Card title="Total Balance"
+          desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, omnis optio. Adipisci, eum ipsa eaque consequuntur dolorum recusandae, officia explicabo quos, sequi sunt corporis eos minima modi nam et id?" /> */}
+        <CardBalance />
         <Card
           title="Goals"
-          desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, omnis optio. Adipisci, eum ipsa eaque consequuntur dolorum recusandae, officia explicabo quos, sequi sunt corporis eos minima modi nam et id?"
+          desc={goalsCard}
         />
-        <Card title="Upcoming Bills" desc={billCard} />
+        <Card title="Upcoming Bills" desc={
+          <div className="h-full flex flex-col justify-around">
+            {billCard}
+          </div>
+        } />
       </div>
       {/* top content end*/}
       {/* bottom content start*/}
