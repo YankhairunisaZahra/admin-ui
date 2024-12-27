@@ -1,13 +1,15 @@
+/* eslint-disable no-unused-vars */
 import Card from "../components/Elements/Card";
 import MainLayout from "../components/Layouts/MainLayout";
 import bills from "../data/bills";
 import expensesBreakdown from "../data/expensesBreakdown";
 import transactions from "../data/transactions";
-import goals from "../data/goals";
 import CardBill from "../components/Fragments/dashboard/CardBill";
 import { useState } from "react";
 import { Icon } from "../components/Elements/Icon";
 import CardBalance from "../components/fragments/dashboard/CardBalance";
+import CardGoal from "../components/fragments/dashboard/CardGoal";
+import CardStatistic from "../components/fragments/dashboard/CardStatistic";
 
 const Dashboard = () => {
   const tabs = ["All", "Revenue", "Expense"];
@@ -46,37 +48,7 @@ const Dashboard = () => {
       </div>
     </div>
   ));
-
-  // const goalsCard = (
-  //   <div key={goals.id} className="lg:flex justify-between pt-3 pb-3 col-12">
-  //     <div>
-  //       <span className="col-6 text-2xl font-bold border-b">${goals.targetAmount}</span>
-  //     </div>
-  //     <div>
-  //       <span className="col-6 text-right border-b pb-2">May, 2025</span>
-  //     </div>
-  //   </div>
-  // );
-
-  const goalsCard = (
-    <div key={goals.id} className="lg:flex justify-between pt-3 pb-3 col-12">
-      <div className="flex items-center">
-        <span className="col-6 text-2xl font-bold border-b">${goals.targetAmount}</span>
-        {/* Progress bar container */}
-        <div className="ml-4 w-full bg-gray-200 rounded-full h-2">
-          {/* Progress bar itself */}
-          <div
-            className="bg-blue-500 rounded-full h-2"
-            style={{ width: `${(goals.presentAmount / goals.targetAmount) * 100}%` }}
-          ></div>
-        </div>
-      </div>
-      <div className="col-6 text-right border-b pb-2">May, 2025</div>
-    </div>
-  );
-
-
-  const expenseCard = expensesBreakdown.map((expense) => (
+  const expenseBreakdown = expensesBreakdown.map((expense) => (
     <div key={expense.id} className="flex pb-4 justify-between">
       <div className="flex">
         <div className="bg-special-bg px-3 rounded-lg flex flex-col place-content-center">
@@ -122,61 +94,66 @@ const Dashboard = () => {
   ));
   return (
     <MainLayout type="dashboard">
-      {/* top content start*/}
-      <div className="md:grid md:grid-cols-3 md:gap-x-6">
-        {/* <Card title="Total Balance"
-          desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, omnis optio. Adipisci, eum ipsa eaque consequuntur dolorum recusandae, officia explicabo quos, sequi sunt corporis eos minima modi nam et id?" /> */}
+      {/* Top Content */}
+      <div className="grid md:grid-cols-3 gap-6">
         <CardBalance />
+        <CardGoal />
         <Card
-          title="Goals"
-          desc={goalsCard}
+          title="Upcoming Bills"
+          desc={
+            <div className="h-full flex flex-col justify-between">
+              {billCard}
+            </div>
+          }
         />
-        <Card title="Upcoming Bills" desc={
-          <div className="h-full flex flex-col justify-around">
-            {billCard}
-          </div>
-        } />
       </div>
-      {/* top content end*/}
-      {/* bottom content start*/}
-      <div className="md:grid md:grid-cols-3 md:gap-x-6">
-        <div className="md:col-span-1">
-          <Card
-            variant="md:col-span-1 md:row-span-2"
-            title="Recent Transaction"
-            desc={
-              <div>
-                <div className="mb-4">
-                  {tabs.map((tab) => (
-                    <button
-                      className={
-                        activeTab == tab
-                          ? "px-4 font-bold border-b-4 border-primary text-primary"
-                          : "px-4 font-bold text-gray-01"
-                      }
-                      key={tab}
-                      value={tab}
-                      onClick={handleClick}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
+
+      {/* Bottom Content */}
+      <div className="grid md:grid-cols-3 gap-6 mt-6">
+        <Card
+          variant="md:col-span-1 md:row-span-2"
+          title="Recent Transaction"
+          desc={
+            <div>
+              {/* Tabs */}
+              <div className="mb-4 flex gap-4">
+                {tabs.map((tab) => (
+                  <button
+                    className={`px-4 py-2 font-bold border-b-4 ${activeTab === tab
+                      ? "border-primary text-primary"
+                      : "border-transparent text-gray-500"
+                      }`}
+                    key={tab}
+                    value={tab}
+                    onClick={handleClick}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+
+              {/* Transactions */}
+              <div className="max-h-[300px] overflow-y-auto">
                 {transactionCard}
               </div>
-            }
-          />
-        </div>
-        <div className="md:col-span-2 flex flex-col flex-1">
-          <Card variant="md:col-span-2" title="Statistics" />
-          <Card
-            variant="md:col-span-2"
-            title="Expenses Breakdown"
-            desc={<div className="lg:grid lg:grid-cols-3">{expenseCard}</div>}
-          />
-        </div>
+            </div>
+          }
+        />
+
+        {/* Statistics Card */}
+        <CardStatistic />
+
+        {/* Expenses Breakdown */}
+        <Card
+          variant="md:col-span-2"
+          title="Expenses Breakdown"
+          desc={
+            <div className="grid lg:grid-cols-3 gap-4">
+              {expenseBreakdown}
+            </div>
+          }
+        />
       </div>
-      {/* bottom content end*/}
     </MainLayout>
   );
 };

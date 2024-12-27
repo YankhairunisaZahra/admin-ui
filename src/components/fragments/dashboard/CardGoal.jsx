@@ -4,8 +4,7 @@ import CompositionExample from "../../Elements/GaugeChart";
 import { Icon } from "../../Elements/Icon";
 
 const CardGoal = () => {
-const chartValue = goals.presentAmount * 100 / goals.targetAmount;
-
+  const chartValue = goals.presentAmount * 100 / goals.targetAmount;
   return (
     <Card
       title="Goals"
@@ -25,7 +24,7 @@ const chartValue = goals.presentAmount * 100 / goals.targetAmount;
           <div className="border-b-2 my-4"></div>
           <div className="flex justify-between">
             <div>
-              <div className="flex mt-5 mb-10">
+              <div className="flex mt-3 mb-10">
                 <div>
                   <Icon.Award />
                 </div>
@@ -51,7 +50,7 @@ const chartValue = goals.presentAmount * 100 / goals.targetAmount;
               </div>
             </div>
             <div className="ms-4 text-center">
-              <CompositionExample desc={chartValue}/>
+              <CompositionExample desc={chartValue} />
               <div className="flex justify-between">
                 <span className="text-gray-03">$0</span>
                 <span className="font-bold text-2xl">12K</span>

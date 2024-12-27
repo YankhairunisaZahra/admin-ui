@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Card = ({ title = false, desc = "", variant = "" }) => {
   return (
     <div className={`flex flex-col flex-1 mb-6 ${variant}`}>
