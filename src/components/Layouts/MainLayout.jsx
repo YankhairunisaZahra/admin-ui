@@ -8,6 +8,7 @@ const MainLayout = (props) => {
   const { children } = props;
   const { theme } = useContext(ThemeContext)
   return (
+    // <div className={`flex bg-special-mainBg w-screen min-h-screen max-w-full `}>
     <div className={`flex bg-special-mainBg w-screen min-h-screen max-w-full ${theme.name}`}>
       {/* navbar start*/}
       <Navbar />

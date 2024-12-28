@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
@@ -36,7 +35,12 @@ const Stepper = (props) => {
                 steps={dataNum}
                 position="static"
                 activeStep={activeStep}
-                sx={{ maxWidth: 400, flexGrow: 1 }}
+                sx={{
+                    maxWidth: 400,
+                    flexGrow: 1,
+                    "& .MuiMobileStepper-dot": { backgroundColor: "darkgray" },
+                    "& .MuiMobileStepper-dotActive": { backgroundColor: themeMode.color }
+                }}
                 nextButton={
                     <Button size="small" onClick={handleNext} disabled={activeStep === dataNum - 1}>
                         Next

@@ -32,6 +32,7 @@ export default function BarsDataset(props) {
     const { theme } = useContext(ThemeContext);
 
     desc.series[1].color = theme.color
+
     return (
         <BarChart
             dataset={desc.data}

@@ -54,6 +54,7 @@ export default function CompositionExample(props) {
             <GaugeReferenceArc />
             <GaugeValueArc className="value-arc" />
             <GaugePointer color={theme.color} />
+            <GaugePointer />
         </GaugeContainer>
     );
 }

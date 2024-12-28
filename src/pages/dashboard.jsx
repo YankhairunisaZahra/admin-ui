@@ -80,15 +80,15 @@ const Dashboard = () => {
             {transaction.transactionName}
           </span>
           <br />
-          <span className="text-gray-02">{transaction.shopName}</span>
+          <span className="text-gray-400">{transaction.shopName}</span>
         </div>
       </div>
       <div className="text-right">
-        <span className="text-xl font-bold text-gray-02">
+        <span className="text-xl font-bold text-gray-700">
           ${transaction.amount}
         </span>
         <br />
-        <span className="text-gray-02">{transaction.date}</span>
+        <span className="text-gray-400">{transaction.date}</span>
       </div>
     </div>
   ));
