@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";

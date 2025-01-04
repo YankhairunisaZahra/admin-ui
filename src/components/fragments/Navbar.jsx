@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Icon } from "../Elements/Icon";

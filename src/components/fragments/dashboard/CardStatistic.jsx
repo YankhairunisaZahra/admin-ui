@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { expensesStatistics } from "../../../data/expense";
 import BarsDataset from "../../Elements/BarChart";
 import Card from "../../Elements/Card";

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Card from "@components/Elements/Card";
 import MainLayout from "@components/Layouts/MainLayout";
 import bills from "@data/bills";

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Logo = (props) => {
   const { variant = "text-primary text-4xl" } = props;
 
