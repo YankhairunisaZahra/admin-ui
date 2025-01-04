@@ -1,5 +1,5 @@
 import bills from "../../../data/bills";
-import Card from "../@components/Elements/Card";
+import Card from "../../Elements/Card";
 
 const CardBill = () => {
     const billCard = bills.map((bill) => (
