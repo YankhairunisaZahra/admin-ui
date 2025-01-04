@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import LabeledInput from "../Elements/LabeledInput";
 import CheckBox from "../Elements/CheckBox";
 import Button from "../Elements/Button";
@@ -8,10 +10,10 @@ import CustomizedSnackbars from "../Elements/SnackBar";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
+import { NotifContext } from "../../context/notifContext";
 
 const FormSignIn = () => {
-    const [msg, setMsg] = useState("");
-    const [open, setOpen] = useState(true);
+    const { setMsg, msg, setOpen, setIsLoading } = useContext(NotifContext);
     const { setIsLoggedIn, setName } = useContext(AuthContext);
 
     const navigate = useNavigate()
@@ -25,6 +27,7 @@ const FormSignIn = () => {
     });
 
     const onFormSubmit = async (data) => {
+        setIsLoading(true);
         try {
             const response = await axios.post(
                 "https://jwt-auth-eight-neon.vercel.app/login",
@@ -33,6 +36,11 @@ const FormSignIn = () => {
                     password: data.password,
                 }
             );
+
+            setIsLoading(false);
+            setOpen(true);
+            setMsg({ severity: 'success', desc: 'Login Success' })
+
             const decoded = jwtDecode(response.data.refreshToken);
             console.log(decoded);
 
@@ -47,6 +55,7 @@ const FormSignIn = () => {
             navigate("/");
 
         } catch (error) {
+            setIsLoading(false);
             if (error.response) {
                 setOpen(true);
                 setMsg({ severity: "error", desc: error.response.data.msg });
@@ -97,9 +106,7 @@ const FormSignIn = () => {
             </div>
             <Button
                 variant={
-                    !isValid
-                        ? "bg-gray-05 w-full text-white"
-                        : "bg-primary w-full text-white"
+                    `${!isValid ? "bg-gray-05" : "bg-primary zoom-in"} w-full text-white}`
                 }
                 type="submit"
                 disabled={!isValid ? "disabled" : ""}>
