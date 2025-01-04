@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import accounts from "../../../data/accounts";
-import Card from "@components/Elements/Card";
-import Stepper from "@components/Elements/Stepper";
+import Card from "../../Elements/Card";
+import Stepper from "../../Elements/Stepper";
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/themeContext";
 
