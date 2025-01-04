@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import Card from "../components/Elements/Card";
-import MainLayout from "../components/Layouts/MainLayout";
-import bills from "../data/bills";
-import expensesBreakdown from "../data/expensesBreakdown";
-import transactions from "../data/transactions";
-import CardBill from "../components/Fragments/dashboard/CardBill";
+import Card from "@components/Elements/Card";
+import MainLayout from "@components/Layouts/MainLayout";
+import bills from "@data/bills";
+import expensesBreakdown from "@data/expensesBreakdown";
+import transactions from "@data/transactions";
+import CardBill from "@components/Fragments/dashboard/CardBill";
 import { useState } from "react";
-import { Icon } from "../components/Elements/Icon";
-import CardBalance from "../components/fragments/dashboard/CardBalance";
-import CardGoal from "../components/fragments/dashboard/CardGoal";
-import CardStatistic from "../components/fragments/dashboard/CardStatistic";
+import { Icon } from "@components/Elements/Icon";
+import CardBalance from "@components/fragments/dashboard/CardBalance";
+import CardGoal from "@components/fragments/dashboard/CardGoal";
+import CardStatistic from "@components/fragments/dashboard/CardStatistic";
 
 const Dashboard = () => {
   const tabs = ["All", "Revenue", "Expense"];
