@@ -4,7 +4,6 @@ import MainLayout from "@components/Layouts/MainLayout";
 import bills from "@data/bills";
 import expensesBreakdown from "@data/expensesBreakdown";
 import transactions from "@data/transactions";
-// import CardBill from "@components/Fragments/dashboard/CardBill";
 import { useState } from "react";
 import { Icon } from "@components/Elements/Icon";
 import CardBalance from "@components/fragments/dashboard/CardBalance";
