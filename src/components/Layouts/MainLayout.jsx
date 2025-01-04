@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import Header from "../Fragments/Header";
-import Navbar from "../Fragments/Navbar";
+import Header from "../../components/fragments/Header";
+import Navbar from "../../components/fragments/Navbar";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/themeContext";
 import { NotifContext } from "../../context/notifContext";
