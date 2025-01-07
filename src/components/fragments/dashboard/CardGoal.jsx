@@ -9,6 +9,7 @@ import axios from "axios";
 import { AuthContext } from "../../../context/authContext";
 import { NotifContext } from "../../../context/notifContext";
 import { Navigate } from "react-router-dom";
+import SimpleBackdrop from "../../Elements/Backdrop";
 
 const CardGoal = () => {
   const [goals, setGoals] = useState({ presentAmount: 0, targetAmount: 0 });
@@ -20,7 +21,6 @@ const CardGoal = () => {
   const getData = async () => {
     try {
       const refreshToken = localStorage.getItem("refreshToken");
-
       const response = await axios.get(
         "https://jwt-auth-eight-neon.vercel.app/goals",
         {
@@ -34,7 +34,7 @@ const CardGoal = () => {
         presentAmount: response.data.data[0].present_amount,
         targetAmount: response.data.data[0].target_amount,
       });
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       if (error.response) {
         if (error.response.status == 401) {
@@ -48,6 +48,7 @@ const CardGoal = () => {
           setName("");
 
           localStorage.removeItem("refreshToken");
+          localStorage.removeItem("username");
           Navigate("/login");
         } else {
           console.log(error.response);

@@ -25,6 +25,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const refreshToken = localStorage.getItem("refreshToken");
+  const username = localStorage.getItem("username");
 
   const Logout = async () => {
     setIsLoading(true);
@@ -42,7 +43,7 @@ const Navbar = () => {
       setIsLoggedIn(false);
       setName("");
       localStorage.removeItem("refreshToken");
-
+      localStorage.removeItem("username");
       navigate("/login");
     } catch (error) {
       setIsLoading(false);
@@ -58,6 +59,7 @@ const Navbar = () => {
     setIsLoading(false);
 
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("username");
     navigate("/")
 
   };
@@ -165,14 +167,14 @@ const Navbar = () => {
             {/* Profile Picture */}
             <div>
               <img
-                src="images/profile.png"
+                src="images/Profile.png"
                 alt="Profile"
                 className="w-12 h-12 rounded-full"
               />
             </div>
             {/* Profile Name and View */}
             <div className="hidden sm:block">
-              <div className="text-white font-bold">{name}</div>
+              <div className="text-white font-bold">{username}</div>
               <div className="text-xs">View Profile</div>
             </div>
             {/* Kebab Menu */}

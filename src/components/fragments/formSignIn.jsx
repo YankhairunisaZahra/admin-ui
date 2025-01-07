@@ -10,10 +10,12 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { NotifContext } from "../../context/notifContext";
+import { ModeContext, useMode } from "../../context/modeContext";
 
 const FormSignIn = () => {
     const { setMsg, msg, setOpen, setIsLoading } = useContext(NotifContext);
     const { setIsLoggedIn, setName } = useContext(AuthContext);
+    const { isDarkMode, toggleMode } = useMode()
 
     const navigate = useNavigate()
 
@@ -42,6 +44,7 @@ const FormSignIn = () => {
 
             const decoded = jwtDecode(response.data.refreshToken);
             console.log(decoded);
+            localStorage.setItem("username", decoded.name);
 
             // console.log(response);
             setOpen(true);
@@ -65,7 +68,7 @@ const FormSignIn = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(onFormSubmit, onErrors)}>
+        <form onSubmit={handleSubmit(onFormSubmit, onErrors)} className={`${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
             <div className="mb-6">
                 <LabeledInput
                     label="Email address"
@@ -104,13 +107,14 @@ const FormSignIn = () => {
                 <CheckBox label="Keep me signed in" name="status" />
             </div>
             <Button
-                variant={
-                    `${!isValid ? "bg-gray-05" : "bg-primary zoom-in"} w-full text-white}`
-                }
+                variant={`${!isValid ? "bg-gray-05" : "bg-primary zoom-in"} w-full text-white`}
                 type="submit"
-                disabled={!isValid ? "disabled" : ""}>
+                disabled={!isValid ? "disabled" : ""}
+                className="text-dark"
+            >
                 Login
             </Button>
+
             {msg && (
                 <CustomizedSnackbars
                     severity={msg.severity}
