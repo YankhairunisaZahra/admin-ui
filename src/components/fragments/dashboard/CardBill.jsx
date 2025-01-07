@@ -122,7 +122,7 @@ const CardBill = () => {
 
             if (response?.data?.data && response.data.data.length > 0) {
                 setBills(response.data.data);
-                // console.log(response);
+                console.log(response.data.data);
             } else {
                 setMsg({
                     severity: "error",
@@ -132,7 +132,7 @@ const CardBill = () => {
             setIsLoading(false)
             setOpen(false)
         } catch (error) {
-            setIsLoading(true)
+            setIsLoading(false)
             setOpen(true);
             if (error.response && error.response.status === 401) {
                 setOpen(true);
