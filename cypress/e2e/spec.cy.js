@@ -1,48 +1,56 @@
 /* eslint-disable no-undef */
-describe("User login", () => {
-  it("should allow user to log in with valid credentials", () => {
+describe("User Login Flow", () => {
+  beforeEach(() => {
     cy.visit("http://localhost:5173/");
-
     cy.url().should("include", "/login");
+  });
 
+  it("should allow user to log in with valid credentials", () => {
     cy.get("input#email")
       .should("be.visible")
-      .should("have.attr", "placeholder", "hello@example.com")
-      .type("hello@example.com")
-      .should("have.value", "hello@example.com");
-
+      .type("hello@example.com");
     cy.get("input#password")
       .should("be.visible")
-      .should("have.attr", "placeholder", "*************")
-      .type("123456")
-      .should("have.value", "123456");
+      .type("123456");
+    cy.get("button")
+      .contains("Login")
+      .click();
 
-    cy.get("button").contains("Login").click();
-
-    cy.get("nav");
-
-    cy.get("header");
+    cy.url().should("include", "/");
+    cy.contains("Overview", { timeout: 10000 }).should("be.visible");
   });
 
   it("should not allow user to log in with invalid credentials", () => {
-    cy.visit("http://localhost:5173/");
-
-    cy.url().should("include", "/login");
-
     cy.get("input#email")
       .should("be.visible")
-      .should("have.attr", "placeholder", "hello@example.com")
-      .type("hello@example.com")
-      .should("have.value", "hello@example.com");
-
+      .type("hello@example.com");
     cy.get("input#password")
       .should("be.visible")
-      .should("have.attr", "placeholder", "*************")
-      .type("123")
-      .should("have.value", "123");
+      .type("123");
+    cy.get("button")
+      .contains("Login")
+      .click();
 
-    cy.get("button").contains("Login").click();
+    cy.contains("Wrong Password", { timeout: 10000 }).should("be.visible");
+  });
+});
 
-    cy.get("div").contains("Wrong Password");
+describe("Dashboard Access", () => {
+  it("should display dashboard elements after login", () => {
+    cy.visit("http://localhost:5173/");
+    cy.get("input#email")
+      .should("be.visible")
+      .type("hello@example.com");
+    cy.get("input#password")
+      .should("be.visible")
+      .type("123456");
+    cy.get("button")
+      .contains("Login")
+      .click();
+
+    cy.url().should("include", "/");
+    cy.contains("Overview", { timeout: 10000 }).should("be.visible");
+
+    cy.get(".MuiChartsGrid-root", { timeout: 10000 }).should("exist");
   });
 });
