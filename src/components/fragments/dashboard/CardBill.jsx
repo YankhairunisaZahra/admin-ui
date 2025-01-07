@@ -163,7 +163,7 @@ const CardBill = () => {
                     <span className="text-2xl font-bold">{bill.date}</span>
                 </div>
                 <div>
-                    <img className="h-6" src={`/images/${bill.logo}`} />
+                    <img className="h-6" src={`./images/${bill.logo}`} />
                     <span className="font-bold">{bill.name}</span>
                     <br />
                     <span className="text-xs">Last Charge - {bill.lastCharge}</span>
