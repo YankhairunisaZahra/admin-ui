@@ -11,9 +11,11 @@ import TransactionPage from "./pages/transaction";
 import BillsPage from "./pages/bills";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext";
+import { useMode } from "./context/modeContext";
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext)
+  const { isDarkMode } = useMode();
   const RequireAuth = ({ children }) => {
     return isLoggedIn ? children : <Navigate to="/login" />
   }
@@ -54,9 +56,12 @@ const App = () => {
   ]);
 
   return (
-    <>
+    // <>
+    //   <RouterProvider router={myRouter} />
+    // </>
+    <div className={isDarkMode ? "dark-mode" : "light-mode"}>
       <RouterProvider router={myRouter} />
-    </>
+    </div>
   );
 };
 

@@ -10,12 +10,14 @@ import { AuthContext } from "../../../context/authContext";
 import { NotifContext } from "../../../context/notifContext";
 import { Navigate } from "react-router-dom";
 import SimpleBackdrop from "../../Elements/Backdrop";
+import { useMode } from "../../../context/modeContext";
 
 const CardGoal = () => {
   const [goals, setGoals] = useState({ presentAmount: 0, targetAmount: 0 });
   const chartValue = goals.presentAmount * 100 / goals.targetAmount;
   const { setIsLoggedIn, setName, name } = useContext(AuthContext);
   const { setMsg, setOpen, setIsLoading } = useContext(NotifContext)
+  const { isDarkMode } = useMode()
 
 
   const getData = async () => {
