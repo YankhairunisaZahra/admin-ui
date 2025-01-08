@@ -45,8 +45,6 @@ const FormSignIn = () => {
             const decoded = jwtDecode(response.data.refreshToken);
             console.log(decoded);
             localStorage.setItem("username", decoded.name);
-
-            // console.log(response);
             setOpen(true);
             setMsg({ severity: "success", desc: "Login Success" });
             localStorage.setItem("refreshToken", response.data.refreshToken);

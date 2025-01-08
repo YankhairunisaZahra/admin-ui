@@ -19,8 +19,13 @@ const CardGoal = () => {
 
 
   const getData = async () => {
+    setIsLoading(true);
     try {
       const refreshToken = localStorage.getItem("refreshToken");
+      if (!refreshToken) {
+        throw new Error("No refresh token found");
+      }
+
       const response = await axios.get(
         "https://jwt-auth-eight-neon.vercel.app/goals",
         {
@@ -34,32 +39,33 @@ const CardGoal = () => {
         presentAmount: response.data.data[0].present_amount,
         targetAmount: response.data.data[0].target_amount,
       });
-      // console.log(response);
+      setOpen(false);
     } catch (error) {
-      if (error.response) {
-        if (error.response.status == 401) {
-          setOpen(true);
-          setMsg({
-            severity: "error",
-            desc: "Session Has Expired. Please Login.",
-          });
+      if (error.response?.status === 401) {
+        setOpen(true);
+        setMsg({
+          severity: "error",
+          desc: "Session Has Expired. Please Login.",
+        });
 
-          setIsLoggedIn(false);
-          setName("");
+        setIsLoggedIn(false);
+        setName("");
 
-          localStorage.removeItem("refreshToken");
-          localStorage.removeItem("username");
-          Navigate("/login");
-        } else {
-          console.log(error.response);
-        }
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("username");
+        Navigate("/login");
+      } else {
+        console.error("Error fetching data:", error.response || error.message);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     getData();
   }, []);
+
 
 
   return (
